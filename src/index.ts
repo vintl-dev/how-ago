@@ -5,7 +5,7 @@ import {
   type FormatDateOptions,
   IntlError,
   IntlErrorCode,
-  IntlShape,
+  type IntlShape,
 } from '@formatjs/intl'
 
 // Based on the original code from Omorphia, Modrinth
@@ -183,7 +183,7 @@ function toTimeSpan(range: DateTimeRange): TimeSpan {
       start = toTimestamp(range)
       end = Date.now()
     } else {
-      let [from, to]: DateTimeRangeArray = Array.isArray(range)
+      const [from, to]: DateTimeRangeArray = Array.isArray(range)
         ? range
         : [range.from, range.to]
 

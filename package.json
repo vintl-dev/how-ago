@@ -1,5 +1,5 @@
 {
-  "name": "@braw/how-ago",
+  "name": "@vintl/how-ago",
   "version": "1.0.0",
   "description": "Relative time with @formatjs/intl made easy",
   "keywords": [
@@ -7,9 +7,9 @@
     "intl",
     "relative-time"
   ],
-  "homepage": "https://github.com/brawaru/how-ago",
+  "homepage": "https://github.com/vintl-dev/how-ago",
   "bugs": {
-    "url": "https://github.com/brawaru/how-ago/issues"
+    "url": "https://github.com/vintl-dev/how-ago/issues"
   },
   "author": {
     "name": "Alexander 'Brawaru' Sorokin",
@@ -18,7 +18,7 @@
   "funding": "https://github.com/Brawaru/Brawaru/blob/main/SUPPORT.md",
   "repository": {
     "type": "git",
-    "url": "https://github.com/brawaru/how-ago.git"
+    "url": "https://github.com/vintl-dev/how-ago.git"
   },
   "license": "MIT",
   "sideEffects": false,

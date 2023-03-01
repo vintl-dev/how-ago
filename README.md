@@ -1,4 +1,4 @@
-# **@braw/how-ago**
+# **@vintl/how-ago**
 
 > Relative time with `@formatjs/intl` made easy.
 
@@ -11,14 +11,13 @@
 This module provides an easy binding for [`@formatjs/intl`][formatjs_intl] to automatically calculate the most suitable unit based on formatting options and a time range, and then format the range with that unit.
 
 [`Intl.RelativeTimeFormat`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat
-
 [formatjs_intl]: https://npm.im/@formatjs/intl
 
 ## **Example**
 
 ```ts
 import { createIntl } from '@formatjs/intl'
-import { createFormatter } from '@braw/how-ago'
+import { createFormatter } from '@vintl/how-ago'
 
 const intl = createIntl({ locale: 'en-US' })
 
@@ -61,7 +60,6 @@ It uses [`Intl.RelativeTimeFormat`] under the hood, with the option [`numeric`] 
 - `options` ([`FormatOptions`](#formatoptions)) — Options for relative time formatter.
 
 **Returns**: `string` — Formatted relative time or date used the most suitable unit or date formatting according to the provided options.
-
 
 ### **`DateTimeRange`**
 
@@ -112,7 +110,6 @@ Describes a value within the time range that can be used as or converted to a ti
   **Default**: `['quarter']`
 
 [`Intl.DateTimeFormatOptions`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options
-
 [`Intl.RelativeTimeFormatUnit`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/format#unit
 
 ## Acknowledgements

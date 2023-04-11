@@ -1,6 +1,6 @@
 import { createIntl } from '@formatjs/intl'
 import { test, expect, vi } from 'vitest'
-import { type Formatter, createFormatter } from '../dist'
+import { type Formatter, createFormatter } from '../dist/index.mjs'
 
 const now = new Date(2023, 0, 1, 0, 0, 0, 0).getTime()
 const second = 1_000

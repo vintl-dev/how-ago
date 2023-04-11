@@ -12,6 +12,7 @@ async function fileExists(fp: string) {
 }
 
 export default defineBuildConfig({
+  declaration: true,
   hooks: {
     async 'rollup:done'(ctx) {
       for (const buildEntry of ctx.buildEntries) {

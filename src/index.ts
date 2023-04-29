@@ -3,10 +3,9 @@ import {
   type ResolvedIntlConfig,
   type FormatRelativeTimeOptions,
   type FormatDateOptions,
-  IntlError,
-  IntlErrorCode,
   type IntlShape,
 } from '@formatjs/intl'
+import { FormatError, ErrorCode } from 'intl-messageformat'
 
 // Based on the original code from Omorphia, Modrinth
 //
@@ -405,29 +404,20 @@ function formatRelativeTimeRange(
   range: DateTimeRange,
   options?: FormatOptions,
 ): string {
-  const reportError = (err: unknown) =>
-    onError(
-      new IntlError(
-        IntlErrorCode.FORMAT_ERROR,
-        'Error formatting time difference.',
-        err,
-      ),
-    )
-
-  let from: number, to: number
-  try {
-    ;[from, to] = toTimeSpan(range)
-  } catch (err) {
-    reportError(err)
-    return ''
-  }
+  const [from, to] = toTimeSpan(range)
 
   try {
     const relative = tryAsRelativeTime(formatRelativeTime, from, to, options)
 
     if (relative != null) return relative
   } catch (err) {
-    reportError(err)
+    onError(
+      new FormatError(
+        'Error formatting time difference as a relative time',
+        ErrorCode.INVALID_VALUE,
+        err instanceof Error ? err.message : String(err),
+      ),
+    )
   }
 
   try {
@@ -439,7 +429,13 @@ function formatRelativeTimeRange(
       },
     )
   } catch (err) {
-    reportError(err)
+    onError(
+      new FormatError(
+        'Error formatting time difference as a date',
+        ErrorCode.INVALID_VALUE,
+        err instanceof Error ? err.message : String(err),
+      ),
+    )
   }
 
   return ''

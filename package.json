@@ -41,7 +41,7 @@
     "bt": "pnpm run -s build && pnpm run -s test"
   },
   "peerDependencies": {
-    "@formatjs/intl": "^2.6.9 <2.7.0"
+    "@formatjs/intl": "^2.7.1"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^12.0.0",

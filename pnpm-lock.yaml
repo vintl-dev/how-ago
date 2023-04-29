@@ -2,7 +2,7 @@ lockfileVersion: '6.0'
 
 dependencies:
   '@formatjs/intl':
-    specifier: ^2.6.9
+    specifier: ^2.6.9 <2.7.0
     version: 2.6.9(typescript@5.0.4)
 
 devDependencies:

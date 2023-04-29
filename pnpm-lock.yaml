@@ -4,6 +4,9 @@ dependencies:
   '@formatjs/intl':
     specifier: ^2.7.1
     version: 2.7.1(typescript@5.0.4)
+  intl-messageformat:
+    specifier: ^10.3.4
+    version: 10.3.4
 
 devDependencies:
   '@nuxtjs/eslint-config-typescript':

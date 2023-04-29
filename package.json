@@ -40,8 +40,8 @@
     "lint": "eslint . --ext .js,.ts",
     "bt": "pnpm run -s build && pnpm run -s test"
   },
-  "peerDependencies": {
-    "@formatjs/intl": "^2.7.1"
+  "dependencies": {
+    "intl-messageformat": "^10.3.4"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
@@ -54,6 +54,9 @@
     "typescript": "^5.0.4",
     "unbuild": "^1.2.0",
     "vitest": "^0.29.8"
+  },
+  "peerDependencies": {
+    "@formatjs/intl": "^2.7.1"
   },
   "publishConfig": {
     "access": "public"

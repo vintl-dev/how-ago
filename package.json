@@ -41,19 +41,19 @@
     "bt": "pnpm run -s build && pnpm run -s test"
   },
   "dependencies": {
-    "intl-messageformat": "^10.3.4"
+    "intl-messageformat": "^10.3.5"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
-    "@types/node": "^18.16.1",
+    "@types/node": "^18.16.4",
     "eslint": "^8.39.0",
     "pathe": "^1.1.0",
     "prettier": "^2.8.8",
     "prettier-plugin-jsdoc": "^0.4.2",
-    "semantic-release": "^21.0.1",
+    "semantic-release": "^21.0.2",
     "typescript": "^5.0.4",
     "unbuild": "^1.2.1",
-    "vitest": "^0.30.1"
+    "vitest": "^0.31.0"
   },
   "peerDependencies": {
     "@formatjs/intl": "^2.7.1"
@@ -61,5 +61,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "packageManager": "pnpm@8.3.1"
+  "packageManager": "pnpm@8.4.0"
 }

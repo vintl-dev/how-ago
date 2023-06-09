@@ -2,10 +2,10 @@ lockfileVersion: '6.0'
 
 dependencies:
   '@formatjs/intl':
-    specifier: ^2.7.1
+    specifier: '>=2.7.1 <=2.7.2'
     version: 2.7.1(typescript@5.0.4)
   intl-messageformat:
-    specifier: ^10.3.5
+    specifier: 10.3.5
     version: 10.3.5
 
 devDependencies:

@@ -50,7 +50,7 @@
     "pathe": "^1.1.0",
     "prettier": "^3.0.2",
     "prettier-plugin-jsdoc": "^1.0.1",
-    "semantic-release": "^21.0.2",
+    "semantic-release": "^22.0.5",
     "typescript": "^5.0.4",
     "unbuild": "^2.0.0",
     "vitest": "^0.31.0"

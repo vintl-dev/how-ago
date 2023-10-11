@@ -3,7 +3,8 @@
   "extends": [
     "config:base",
     "group:allNonMajor",
-    ":semanticCommitTypeAll(chore)"
+    ":semanticCommitTypeAll(chore)",
+    ":widenPeerDependencies"
   ],
   "meteor": {
     "enabled": false

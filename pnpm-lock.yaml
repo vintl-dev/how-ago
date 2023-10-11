@@ -6,10 +6,10 @@ settings:
 
 dependencies:
   '@formatjs/intl':
-    specifier: <=2.9.3
+    specifier: ^2.7.1
     version: 2.7.1(typescript@5.2.2)
   intl-messageformat:
-    specifier: 10.5.3
+    specifier: ^10.5.3
     version: 10.5.3
 
 devDependencies:

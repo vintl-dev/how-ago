@@ -41,7 +41,7 @@
     "bt": "pnpm run -s build && pnpm run -s test"
   },
   "dependencies": {
-    "intl-messageformat": "10.5.3"
+    "intl-messageformat": "^10.5.3"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
@@ -56,7 +56,7 @@
     "vitest": "^0.34.6"
   },
   "peerDependencies": {
-    "@formatjs/intl": "<=2.9.3"
+    "@formatjs/intl": "^2.7.1"
   },
   "publishConfig": {
     "access": "public"

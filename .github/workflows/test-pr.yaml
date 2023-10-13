@@ -43,14 +43,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
-      - uses: actions/cache@v3
-        name: Setup ESLint cache
-        with:
-          path: .eslintcache
-          key: ${{ runner.os }}-eslint-${{ hashFiles('**/pnpm-lock.yaml', '.eslintignore', '.eslintrc.json', 'tsconfig.json', 'tsconfig.*.json') }}
-          restore-keys: |
-            ${{ runner.os }}-eslint-
-
       - name: Install dependencies
         run: pnpm install
 

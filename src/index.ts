@@ -238,12 +238,7 @@ function toTimeSpan(range: DateTimeRange): TimeSpan {
         : [range.from, range.to]
 
       start = toTimestamp(from)
-
-      if (to == null) {
-        end = Date.now()
-      } else {
-        end = toTimestamp(to)
-      }
+      end = to == null ? Date.now() : toTimestamp(to)
     }
   } else {
     start = toTimestamp(range)
@@ -258,16 +253,14 @@ function getExcludedUnits(options?: FormatOptions) {
 
   const optionsExcludedUnits = options?.excludedUnits
 
-  if (optionsExcludedUnits != null) {
-    if (Array.isArray(optionsExcludedUnits)) {
-      for (const unit of optionsExcludedUnits) excludedUnits.push(unit)
-    } else {
-      throw new TypeError(
-        'Value is not of array type for formatTimeDifference options property excludedUnits',
-      )
-    }
-  } else {
+  if (optionsExcludedUnits == null) {
     excludedUnits.push('quarter')
+  } else if (Array.isArray(optionsExcludedUnits)) {
+    for (const unit of optionsExcludedUnits) excludedUnits.push(unit)
+  } else {
+    throw new TypeError(
+      'Value is not of array type for formatTimeDifference options property excludedUnits',
+    )
   }
 
   return excludedUnits
@@ -278,22 +271,20 @@ function filterMatchers(options?: FormatOptions) {
 
   const excludedUnits = getExcludedUnits(options)
 
-  if (excludedUnits.length === 0) {
-    filteredMatchers = matchers
-  } else {
-    filteredMatchers = [...matchers]
+  if (excludedUnits.length === 0) return matchers
 
-    for (const unit of excludedUnits) {
-      const normalizedUnit = normalizeUnit(unit)
+  filteredMatchers = [...matchers]
 
-      const matcherToExcludeIndex = filteredMatchers.findIndex(
-        (matcher) => matcher[0] === normalizedUnit,
-      )
+  for (const unit of excludedUnits) {
+    const normalizedUnit = normalizeUnit(unit)
 
-      if (matcherToExcludeIndex === -1) throwRangeError('excludedUnits', unit)
+    const matcherToExcludeIndex = filteredMatchers.findIndex(
+      (matcher) => matcher[0] === normalizedUnit,
+    )
 
-      filteredMatchers.splice(matcherToExcludeIndex, 1)
-    }
+    if (matcherToExcludeIndex === -1) throwRangeError('excludedUnits', unit)
+
+    filteredMatchers.splice(matcherToExcludeIndex, 1)
   }
 
   return filteredMatchers

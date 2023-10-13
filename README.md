@@ -2,7 +2,7 @@
 
 > Relative time with `@formatjs/intl` made easy.
 
-[![Supports: ESM only](https://img.shields.io/static/v1?label=Format&message=ESM%20only&color=blue&style=flat-square)](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c) [![Depends on @formatjs/intl](https://img.shields.io/static/v1?label=Requires&message=%40formatjs%2Fintl&color=lightgray&style=flat-square)][formatjs_intl]
+[![Supports: ESM only.](https://img.shields.io/static/v1?label=Format&message=ESM%20only&color=blue&style=flat-square)](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c) [![Depends on @formatjs/intl.](https://img.shields.io/static/v1?label=Requires&message=%40formatjs%2Fintl&color=lightgray&style=flat-square)][formatjs_intl] [![Support the author.](https://img.shields.io/static/v1?label=&message=Support+the+author&color=5E8C61&style=flat-square&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyOCIgaGVpZ2h0PSIyOCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgY2xhc3M9Imx1Y2lkZSBsdWNpZGUtaGVhcnQiPjxwYXRoIGQ9Ik0xOSAxNGMxLjQ5LTEuNDYgMy0zLjIxIDMtNS41QTUuNSA1LjUgMCAwIDAgMTYuNSAzYy0xLjc2IDAtMyAuNS00LjUgMi0xLjUtMS41LTIuNzQtMi00LjUtMkE1LjUgNS41IDAgMCAwIDIgOC41YzAgMi4zIDEuNSA0LjA1IDMgNS41bDcgN1oiLz48L3N2Zz4%3D)](https://github.com/Brawaru/Brawaru/blob/main/SUPPORT.md)
 
 ## **Summary**
 
@@ -157,3 +157,9 @@ This implementation is based on [the implementation][omorphia_impl] from Modrint
 
 [Omorphia]: https://github.com/modrinth/omorphia/
 [omorphia_impl]: https://github.com/modrinth/omorphia/blob/87251878a582616d65301aa9881b3ac585ace97e/src/utils/ago.ts
+
+## Credits
+
+Made with 💜 by [Brawaru](https://github.com/brawaru). Released under [MIT Licence](./LICENSE).
+
+<a href="https://github.com/Brawaru/Brawaru/blob/main/SUPPORT.md"><img alt="Support me by donating" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/donate/generic-singular_vector.svg"></a>

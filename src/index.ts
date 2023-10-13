@@ -261,13 +261,11 @@ function getExcludedUnits({ excludedUnits }: FormatOptions) {
 }
 
 function filterMatchers(options: FormatOptions) {
-  let filteredMatchers: IntervalMatcher[]
-
   const excludedUnits = getExcludedUnits(options)
 
   if (excludedUnits.length === 0) return matchers
 
-  filteredMatchers = [...matchers]
+  const filteredMatchers = [...matchers]
 
   for (const unit of excludedUnits) {
     const normalizedUnit = normalizeUnit(unit)

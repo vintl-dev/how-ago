@@ -156,9 +156,21 @@ test('formatTimeDifference (halfCeil rounding method)', () => {
   ).toMatchInlineSnapshot('"через 3 роки"')
 })
 
-test('formatTimeDifference (with unitRounding)', () => {
+test('formatTimeDifference (without unitRounding)', () => {
   const fiftyNineSthnMinutesAgo = now - 59.6 * minute
   const twentyThreeSthnHoursInFuture = now + 23.5 * hour
+
+  expect(
+    ago(fiftyNineSthnMinutesAgo, {
+      roundingMode: 'halfExpand',
+    }),
+  ).toMatchInlineSnapshot('"1 годину тому"')
+
+  expect(
+    ago(twentyThreeSthnHoursInFuture, {
+      roundingMode: 'halfExpand',
+    }),
+  ).toMatchInlineSnapshot('"завтра"')
 
   expect(
     ago(fiftyNineSthnMinutesAgo, {
@@ -173,20 +185,6 @@ test('formatTimeDifference (with unitRounding)', () => {
       unitRounding: false,
     }),
   ).toMatchInlineSnapshot('"через 24 години"')
-
-  expect(
-    ago(fiftyNineSthnMinutesAgo, {
-      roundingMode: 'halfExpand',
-      unitRounding: true,
-    }),
-  ).toMatchInlineSnapshot('"1 годину тому"')
-
-  expect(
-    ago(twentyThreeSthnHoursInFuture, {
-      roundingMode: 'halfExpand',
-      unitRounding: true,
-    }),
-  ).toMatchInlineSnapshot('"завтра"')
 })
 
 // TODO: more tests + coverage

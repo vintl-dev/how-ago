@@ -208,12 +208,7 @@ export interface FormatOptions extends FormatRelativeTimeOptions {
    * hour"`. Otherwise, the result of 60 minutes will be returned as is — `"60
    * minutes"`.
    *
-   * By default, this option is disabled (`false`) when the `roundingMode` is
-   * set to `null`, but enabled (`true`) otherwise. This will change in the next
-   * major update, in which this option will always be enabled (`true`) by
-   * default, regardless of the `roundingMode`.
-   *
-   * @default false / true // Depends on the roundingMode
+   * @default true
    */
   unitRounding?: boolean
 }
@@ -373,8 +368,8 @@ function getRoundingMethod({ roundingMode }: FormatOptions) {
   return roundingModesImpls[roundingMode]
 }
 
-function shouldUseUnitRounding({ unitRounding, roundingMode }: FormatOptions) {
-  unitRounding ??= (roundingMode ?? null) !== null
+function shouldUseUnitRounding({ unitRounding }: FormatOptions) {
+  unitRounding ??= true
   if (typeof unitRounding !== 'boolean') {
     throwRangeError('unitRounding', unitRounding)
   }

@@ -290,11 +290,7 @@ function filterMatchers(options?: FormatOptions) {
         (matcher) => matcher[0] === normalizedUnit,
       )
 
-      if (matcherToExcludeIndex === -1) {
-        throw new RangeError(
-          `Value ${unit} out of range for formatTimeDifference options property excludedUnits`,
-        )
-      }
+      if (matcherToExcludeIndex === -1) throwRangeError('excludedUnits', unit)
 
       filteredMatchers.splice(matcherToExcludeIndex, 1)
     }

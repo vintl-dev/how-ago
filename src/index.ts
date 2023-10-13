@@ -197,7 +197,7 @@ export interface FormatOptions extends FormatRelativeTimeOptions {
    *
    * Value of `null` will use `Math.round`. This value is only kept for backward
    * compatibility, and will be removed in the next major release, in which
-   * `"halfExpand"` will be made a new default.
+   * `"trunc"` will be made a new default.
    *
    * @default null // Use `Math.round` (deprecated)
    */

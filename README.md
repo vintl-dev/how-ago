@@ -125,7 +125,7 @@ Describes a value within the time range that can be used as or converted to a ti
   - `halfTrunc` — round values below or at half-increment towards 0, and values above away from 0.
   - `halfEven` — round values at half-increment towards the nearest even value, values above it away from 0, and values below it towards 0.
 
-  Value of `null` will use `Math.round`. This value is only kept for backward compatibility and will be removed in the next major release, in which `"halfExpand"` will be made the new default.
+  Value of `null` will use `Math.round`. This value is only kept for backward compatibility and will be removed in the next major release, in which `"trunc"` will be made the new default.
 
   **Default**: `null`.
 

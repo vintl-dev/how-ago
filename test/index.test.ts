@@ -139,38 +139,53 @@ test('formatTimeDifference (all units excluded)', () => {
   ).toBe('1 січня 2023 р. о 00:00')
 })
 
-test('formatTimeDifference (trunc rounding method)', () => {
+test('formatTimeDifference (halfCeil rounding method)', () => {
   const twoSthnYearsInPast = now - year * 2.7
   const twoSthnYearsInFuture = now + year * 2.7
 
-  expect(ago(twoSthnYearsInPast)).toMatchInlineSnapshot('"3 роки тому"')
-  expect(ago(twoSthnYearsInFuture)).toMatchInlineSnapshot('"через 3 роки"')
+  expect(ago(twoSthnYearsInPast)).toMatchInlineSnapshot('"2 роки тому"')
+
+  expect(ago(twoSthnYearsInFuture)).toMatchInlineSnapshot('"через 2 роки"')
 
   expect(
-    ago(twoSthnYearsInPast, { roundingMode: 'trunc' }),
-  ).toMatchInlineSnapshot('"2 роки тому"')
+    ago(twoSthnYearsInPast, { roundingMode: 'halfCeil' }),
+  ).toMatchInlineSnapshot('"3 роки тому"')
 
   expect(
-    ago(twoSthnYearsInFuture, { roundingMode: 'trunc' }),
-  ).toMatchInlineSnapshot('"через 2 роки"')
+    ago(twoSthnYearsInFuture, { roundingMode: 'halfCeil' }),
+  ).toMatchInlineSnapshot('"через 3 роки"')
 })
 
 test('formatTimeDifference (with unitRounding)', () => {
   const fiftyNineSthnMinutesAgo = now - 59.6 * minute
   const twentyThreeSthnHoursInFuture = now + 23.5 * hour
 
-  expect(ago(fiftyNineSthnMinutesAgo)).toMatchInlineSnapshot('"60 хвилин тому"')
-
-  expect(ago(twentyThreeSthnHoursInFuture)).toMatchInlineSnapshot(
-    '"через 24 години"',
-  )
+  expect(
+    ago(fiftyNineSthnMinutesAgo, {
+      roundingMode: 'halfExpand',
+      unitRounding: false,
+    }),
+  ).toMatchInlineSnapshot('"60 хвилин тому"')
 
   expect(
-    ago(fiftyNineSthnMinutesAgo, { unitRounding: true }),
+    ago(twentyThreeSthnHoursInFuture, {
+      roundingMode: 'halfExpand',
+      unitRounding: false,
+    }),
+  ).toMatchInlineSnapshot('"через 24 години"')
+
+  expect(
+    ago(fiftyNineSthnMinutesAgo, {
+      roundingMode: 'halfExpand',
+      unitRounding: true,
+    }),
   ).toMatchInlineSnapshot('"1 годину тому"')
 
   expect(
-    ago(twentyThreeSthnHoursInFuture, { unitRounding: true }),
+    ago(twentyThreeSthnHoursInFuture, {
+      roundingMode: 'halfExpand',
+      unitRounding: true,
+    }),
   ).toMatchInlineSnapshot('"завтра"')
 })
 

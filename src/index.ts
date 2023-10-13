@@ -195,13 +195,9 @@ export interface FormatOptions extends FormatRelativeTimeOptions {
    * - `halfEven` — round values at half-increment towards the nearest even value,
    *   values above it away from 0, and values below it towards 0.
    *
-   * Value of `null` will use `Math.round`. This value is only kept for backward
-   * compatibility, and will be removed in the next major release, in which
-   * `"trunc"` will be made a new default.
-   *
-   * @default null // Use `Math.round` (deprecated)
+   * @default 'trunc'
    */
-  roundingMode?: RoundingMode | null
+  roundingMode?: RoundingMode
 
   /**
    * Whether to round to the nearest unit if the rounded duration goes above the
@@ -370,8 +366,7 @@ function calculateBoundaries(
 }
 
 function getRoundingMethod({ roundingMode }: FormatOptions) {
-  roundingMode ??= null
-  if (roundingMode === null) return Math.round
+  roundingMode ??= 'trunc'
   if (!Object.hasOwn(roundingModesImpls, roundingMode)) {
     throwRangeError('roundingMode', roundingMode)
   }

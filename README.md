@@ -129,6 +129,16 @@ Describes a value within the time range that can be used as or converted to a ti
 
   **Default**: `null`.
 
+- `unitRounding?` (`boolean`)
+
+  Whether to round to the nearest unit if the rounded duration goes above the threshold for the current unit.
+
+  For example, if 59.7 minutes round to 60 minutes, and this option is enabled, the duration will be rounded to use hour units, thus returning `"1 hour"`. Otherwise, the result of 60 minutes will be returned as is — `"60 minutes"`.
+
+  By default, this option is disabled (`false`) when the `roundingMode` is set to `null`, but enabled (`true`) otherwise. This will change in the next major update, in which this option will always be enabled (`true`) by default, regardless of the `roundingMode`.
+
+  **Default**: `false` (when `roundingMode` is `null`) or `true` (otherwise).
+
 [`Intl.NumberFormat`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat
 [`Intl.DateTimeFormatOptions`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options
 [`Intl.RelativeTimeFormatUnit`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/format#unit

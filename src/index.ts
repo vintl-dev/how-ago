@@ -202,6 +202,24 @@ export interface FormatOptions extends FormatRelativeTimeOptions {
    * @default null // Use `Math.round` (deprecated)
    */
   roundingMode?: RoundingMode | null
+
+  /**
+   * Whether to round to the nearest unit if the rounded duration goes above the
+   * threshold for the current unit.
+   *
+   * For example, if 59.7 minutes round to 60 minutes, and this option is
+   * enabled, the duration will be rounded to use hour units, thus returning `"1
+   * hour"`. Otherwise, the result of 60 minutes will be returned as is — `"60
+   * minutes"`.
+   *
+   * By default, this option is disabled (`false`) when the `roundingMode` is
+   * set to `null`, but enabled (`true`) otherwise. This will change in the next
+   * major update, in which this option will always be enabled (`true`) by
+   * default, regardless of the `roundingMode`.
+   *
+   * @default false / true // Depends on the roundingMode
+   */
+  unitRounding?: boolean
 }
 
 type TimeSpan = [start: number, end: number]
@@ -376,6 +394,17 @@ function getRoundingMethod(options?: FormatOptions) {
   return roundingModesImpls[roundingMode]
 }
 
+function shouldUseUnitRounding({
+  unitRounding,
+  roundingMode,
+}: FormatOptions = {}) {
+  unitRounding ??= (roundingMode ?? null) !== null
+  if (typeof unitRounding !== 'boolean') {
+    throwRangeError('unitRounding', unitRounding)
+  }
+  return unitRounding
+}
+
 function tryAsRelativeTime(
   formatRelativeTime: IntlFormatters['formatRelativeTime'],
   from: number,
@@ -388,16 +417,20 @@ function tryAsRelativeTime(
 
   const round = getRoundingMethod(options)
 
+  const unitRounding = shouldUseUnitRounding(options)
+
   const [minimumUnit, maximumUnit] = getMinimumMaximumUnits(options)
 
   const [minimumUnitMatcherIndex, maximumUnitMatcherIndex] =
     calculateBoundaries(filteredMatchers, minimumUnit, maximumUnit)
 
-  const diff = from - to
-  const diffAbs = Math.abs(diff)
+  let diff = from - to
+  let diffAbs = Math.abs(diff)
+
+  const iterationStartIndex = Math.max(maximumUnitMatcherIndex - 1, 0)
 
   for (
-    let currentMatcherIndex = Math.max(maximumUnitMatcherIndex - 1, 0);
+    let currentMatcherIndex = iterationStartIndex;
     currentMatcherIndex <= minimumUnitMatcherIndex;
     currentMatcherIndex++
   ) {
@@ -407,9 +440,34 @@ function tryAsRelativeTime(
 
     if (currentMatcherIndex < maximumUnitMatcherIndex) break
 
-    const division = diffAbs / matcher[matcher.length > 2 ? 2 : 1]!
+    const divisor = matcher[matcher.length > 2 ? 2 : 1]!
+
+    const division = diffAbs / divisor
 
     const roundedDivision = round(diff < 0 ? -division : division)
+
+    if (unitRounding && currentMatcherIndex !== iterationStartIndex) {
+      // check for a possible rollover
+      const previousMatcher = filteredMatchers[currentMatcherIndex - 1]
+
+      const previousDivisor =
+        previousMatcher[previousMatcher.length > 2 ? 2 : 1]!
+
+      const threshold = previousDivisor / divisor
+
+      if (Math.abs(roundedDivision) >= threshold) {
+        // we have a rollover! calculate roundedDiff
+        const nextDiff = (diffAbs / division) * roundedDivision
+
+        diff = nextDiff
+        diffAbs = Math.abs(nextDiff)
+
+        // return to previous unit to re-do calculations
+        currentMatcherIndex -= 2
+
+        continue
+      }
+    }
 
     return formatRelativeTime(roundedDivision, matcher[0], {
       numeric: 'auto',

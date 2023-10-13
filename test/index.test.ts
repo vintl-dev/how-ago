@@ -155,4 +155,23 @@ test('formatTimeDifference (trunc rounding method)', () => {
   ).toMatchInlineSnapshot('"через 2 роки"')
 })
 
+test('formatTimeDifference (with unitRounding)', () => {
+  const fiftyNineSthnMinutesAgo = now - 59.6 * minute
+  const twentyThreeSthnHoursInFuture = now + 23.5 * hour
+
+  expect(ago(fiftyNineSthnMinutesAgo)).toMatchInlineSnapshot('"60 хвилин тому"')
+
+  expect(ago(twentyThreeSthnHoursInFuture)).toMatchInlineSnapshot(
+    '"через 24 години"',
+  )
+
+  expect(
+    ago(fiftyNineSthnMinutesAgo, { unitRounding: true }),
+  ).toMatchInlineSnapshot('"1 годину тому"')
+
+  expect(
+    ago(twentyThreeSthnHoursInFuture, { unitRounding: true }),
+  ).toMatchInlineSnapshot('"завтра"')
+})
+
 // TODO: more tests + coverage

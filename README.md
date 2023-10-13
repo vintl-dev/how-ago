@@ -103,13 +103,13 @@ Describes a value within the time range that can be used as or converted to a ti
 
   **Default**: `{ dateStyle: 'long', timeStyle: 'short' }`
 
-- `excludedUnits?` (Array of [`Intl.RelativeTimeFormatUnit`][intl_relTimeUnit])
+- `excludedUnits?` (Array of [`Intl.RelativeTimeFormatUnit`])
 
   Units to never use for relative time formatting.
 
   **Default**: `['quarter']`
 
-- `roundingMode?` ([`RoundingMode`] or `null`)
+- `roundingMode?` ([`RoundingMode`])
 
   Rounding mode to use when the resulting duration is not an integer (e.g., 4.7 seconds).
 

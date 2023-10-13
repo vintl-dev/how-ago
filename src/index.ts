@@ -248,25 +248,19 @@ function toTimeSpan(range: DateTimeRange): TimeSpan {
   return [start, end]
 }
 
-function getExcludedUnits(options?: FormatOptions) {
-  const excludedUnits: Intl.RelativeTimeFormatUnit[] = []
+function getExcludedUnits({ excludedUnits }: FormatOptions) {
+  if (excludedUnits == null) return ['quarter']
 
-  const optionsExcludedUnits = options?.excludedUnits
-
-  if (optionsExcludedUnits == null) {
-    excludedUnits.push('quarter')
-  } else if (Array.isArray(optionsExcludedUnits)) {
-    for (const unit of optionsExcludedUnits) excludedUnits.push(unit)
-  } else {
+  if (!Array.isArray(excludedUnits)) {
     throw new TypeError(
       'Value is not of array type for formatTimeDifference options property excludedUnits',
     )
   }
 
-  return excludedUnits
+  return [...excludedUnits]
 }
 
-function filterMatchers(options?: FormatOptions) {
+function filterMatchers(options: FormatOptions) {
   let filteredMatchers: IntervalMatcher[]
 
   const excludedUnits = getExcludedUnits(options)
@@ -292,24 +286,29 @@ function filterMatchers(options?: FormatOptions) {
 
 const unitNone = 'none'
 
-function getMinimumMaximumUnits(
-  options?: FormatOptions,
-): readonly [
+function getMinimumMaximumUnits({
+  minimumUnit,
+  maximumUnit,
+}: FormatOptions): readonly [
   minimumUnit: Intl.RelativeTimeFormatUnitSingular | 'none',
   maximumUnit: Intl.RelativeTimeFormatUnitSingular | 'none',
 ] {
-  let minUnit = options?.minimumUnit ?? unitNone
-  let maxUnit = options?.maximumUnit ?? unitNone
+  minimumUnit ??= unitNone
+  maximumUnit ??= unitNone
 
-  if (minUnit !== unitNone) {
-    minUnit = normalizeUnit(String(minUnit) as Intl.RelativeTimeFormatUnit)
+  if (minimumUnit !== unitNone) {
+    minimumUnit = normalizeUnit(
+      String(minimumUnit) as Intl.RelativeTimeFormatUnit,
+    )
   }
 
-  if (maxUnit !== unitNone) {
-    maxUnit = normalizeUnit(String(maxUnit) as Intl.RelativeTimeFormatUnit)
+  if (maximumUnit !== unitNone) {
+    maximumUnit = normalizeUnit(
+      String(maximumUnit) as Intl.RelativeTimeFormatUnit,
+    )
   }
 
-  return [minUnit, maxUnit] as const
+  return [minimumUnit, maximumUnit] as const
 }
 
 function throwRangeError(property: string, value: unknown): never {
@@ -372,8 +371,8 @@ function calculateBoundaries(
   return [minimumUnitMatcherIndex, maximumUnitMatcherIndex]
 }
 
-function getRoundingMethod(options?: FormatOptions) {
-  const roundingMode = options?.roundingMode ?? null
+function getRoundingMethod({ roundingMode }: FormatOptions) {
+  roundingMode ??= null
   if (roundingMode === null) return Math.round
   if (!Object.hasOwn(roundingModesImpls, roundingMode)) {
     throwRangeError('roundingMode', roundingMode)
@@ -381,10 +380,7 @@ function getRoundingMethod(options?: FormatOptions) {
   return roundingModesImpls[roundingMode]
 }
 
-function shouldUseUnitRounding({
-  unitRounding,
-  roundingMode,
-}: FormatOptions = {}) {
+function shouldUseUnitRounding({ unitRounding, roundingMode }: FormatOptions) {
   unitRounding ??= (roundingMode ?? null) !== null
   if (typeof unitRounding !== 'boolean') {
     throwRangeError('unitRounding', unitRounding)
@@ -396,7 +392,7 @@ function tryAsRelativeTime(
   formatRelativeTime: IntlFormatters['formatRelativeTime'],
   from: number,
   to: number,
-  options?: FormatOptions,
+  options: FormatOptions,
 ): string | null {
   const filteredMatchers = filterMatchers(options)
 
@@ -491,7 +487,7 @@ function formatRelativeTimeRange(
   formatRelativeTime: IntlFormatters<any>['formatRelativeTime'],
   formatDate: IntlFormatters<any>['formatDate'],
   range: DateTimeRange,
-  options?: FormatOptions,
+  options: FormatOptions = {},
 ): string {
   const [from, to] = toTimeSpan(range)
 
@@ -512,7 +508,7 @@ function formatRelativeTimeRange(
   try {
     return formatDate(
       from,
-      options?.dateTimeOptions ?? {
+      options.dateTimeOptions ?? {
         dateStyle: 'long',
         timeStyle: 'short',
       },

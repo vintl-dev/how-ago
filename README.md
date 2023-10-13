@@ -125,9 +125,7 @@ Describes a value within the time range that can be used as or converted to a ti
   - `halfTrunc` — round values below or at half-increment towards 0, and values above away from 0.
   - `halfEven` — round values at half-increment towards the nearest even value, values above it away from 0, and values below it towards 0.
 
-  Value of `null` will use `Math.round`. This value is only kept for backward compatibility and will be removed in the next major release, in which `"trunc"` will be made the new default.
-
-  **Default**: `null`.
+  **Default**: `'trunc'`.
 
 - `unitRounding?` (`boolean`)
 
@@ -135,9 +133,7 @@ Describes a value within the time range that can be used as or converted to a ti
 
   For example, if 59.7 minutes round to 60 minutes, and this option is enabled, the duration will be rounded to use hour units, thus returning `"1 hour"`. Otherwise, the result of 60 minutes will be returned as is — `"60 minutes"`.
 
-  By default, this option is disabled (`false`) when the `roundingMode` is set to `null`, but enabled (`true`) otherwise. This will change in the next major update, in which this option will always be enabled (`true`) by default, regardless of the `roundingMode`.
-
-  **Default**: `false` (when `roundingMode` is `null`) or `true` (otherwise).
+  **Default**: `true`.
 
 [`Intl.NumberFormat`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat
 [`Intl.DateTimeFormatOptions`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options

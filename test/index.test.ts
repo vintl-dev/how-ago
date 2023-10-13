@@ -139,4 +139,20 @@ test('formatTimeDifference (all units excluded)', () => {
   ).toBe('1 січня 2023 р. о 00:00')
 })
 
+test('formatTimeDifference (trunc rounding method)', () => {
+  const twoSthnYearsInPast = now - year * 2.7
+  const twoSthnYearsInFuture = now + year * 2.7
+
+  expect(ago(twoSthnYearsInPast)).toMatchInlineSnapshot('"3 роки тому"')
+  expect(ago(twoSthnYearsInFuture)).toMatchInlineSnapshot('"через 3 роки"')
+
+  expect(
+    ago(twoSthnYearsInPast, { roundingMode: 'trunc' }),
+  ).toMatchInlineSnapshot('"2 роки тому"')
+
+  expect(
+    ago(twoSthnYearsInFuture, { roundingMode: 'trunc' }),
+  ).toMatchInlineSnapshot('"через 2 роки"')
+})
+
 // TODO: more tests + coverage

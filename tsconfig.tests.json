@@ -3,9 +3,21 @@
   "compilerOptions": {
     "composite": true,
 
-    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
 
-    "types": []
+    "esModuleInterop": true,
+    "allowImportingTsExtensions": true,
+
+    "types": [],
+
+    "emitDeclarationOnly": true
   },
-  "include": ["./vitest.config.ts", "./test/*.test.ts", "./tsconfig.tests.json"]
+  "include": [
+    "./vitest.config.ts",
+    "./test/*.test.ts",
+    "./test/data/*.ts",
+    "./tsconfig.tests.json",
+    "./src/utils/*.ts"
+  ]
 }

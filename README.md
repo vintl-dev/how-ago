@@ -109,8 +109,37 @@ Describes a value within the time range that can be used as or converted to a ti
 
   **Default**: `['quarter']`
 
+- `roundingMode?` ([`RoundingMode`] or `null`)
+
+  Rounding mode to use when the resulting duration is not an integer (e.g., 4.7 seconds).
+
+  It is roughly equivalent to the `roundingMode` option for the [`Intl.NumberFormat`] API and accepts the following options:
+
+  - `ceil` — round towards positive infinity.
+  - `floor` — round towards negative infinity.
+  - `expand` — round away from 0.
+  - `trunc` — round towards 0.
+  - `halfCeil` — round values below or at half-increment towards positive infinity, and values above away from 0.
+  - `halfFloor` — round values below or at half-increment towards negative infinity, and values above away from 0.
+  - `halfExpand` — round values above or at half-increment away from 0, and values below towards 0.
+  - `halfTrunc` — round values below or at half-increment towards 0, and values above away from 0.
+  - `halfEven` — round values at half-increment towards the nearest even value, values above it away from 0, and values below it towards 0.
+
+  Value of `null` will use `Math.round`. This value is only kept for backward compatibility and will be removed in the next major release, in which `"halfExpand"` will be made the new default.
+
+  **Default**: `null`.
+
+[`Intl.NumberFormat`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat
 [`Intl.DateTimeFormatOptions`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options
 [`Intl.RelativeTimeFormatUnit`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/format#unit
+
+### `RoundingMode`
+
+[`RoundingMode`]: #roundingmode
+
+String literal for one of the supported rounding modes.
+
+**Possible values**: `"ceil"`, `"floor"`, `"expand"`, `"trunc"`, `"halfCeil"`, `"halfFloor"`, `"halfExpand"`, `"halfTrunc"`, `"halfEven"`.
 
 ## Acknowledgements
 

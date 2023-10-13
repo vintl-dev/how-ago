@@ -29,18 +29,28 @@
     "@typescript-eslint/no-extra-semi": "off",
     "indent": "off",
     "no-useless-constructor": "off",
-    "@typescript-eslint/no-useless-constructor": "warn"
+    "@typescript-eslint/no-useless-constructor": "warn",
+    "import/namespace": ["error", { "allowComputed": true }]
   },
   "parserOptions": {
     "project": "./tsconfig.json"
   },
   "overrides": [
     {
+      "files": ["./src/**/*.ts"],
+      "parserOptions": { "project": "./tsconfig.json" }
+    },
+    {
       "files": ["./build.config.ts", "./build/*.ts"],
       "parserOptions": { "project": "./tsconfig.build.json" }
     },
     {
-      "files": ["./vitest.config.ts", "./test/*.test.ts"],
+      "files": [
+        "./vitest.config.ts",
+        "./test/*.test.ts",
+        "./test/data/*.ts",
+        "./src/utils/*.ts"
+      ],
       "parserOptions": { "project": "./tsconfig.tests.json" }
     }
   ]

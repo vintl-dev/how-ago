@@ -4,6 +4,8 @@
     "module": "esnext",
     "moduleResolution": "bundler",
 
+    "allowImportingTsExtensions": true,
+
     "types": [],
 
     "outDir": "./dist",

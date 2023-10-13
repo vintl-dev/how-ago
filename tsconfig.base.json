@@ -7,8 +7,6 @@
     "strict": true,
     "strictBindCallApply": true,
 
-    "verbatimModuleSyntax": true,
-
     "resolveJsonModule": true,
     "isolatedModules": true,
     "esModuleInterop": false,

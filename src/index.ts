@@ -6,6 +6,9 @@ import {
   type IntlShape,
 } from '@formatjs/intl'
 import { FormatError, ErrorCode } from 'intl-messageformat'
+import * as roundingModesImpls from './utils/rounding.ts'
+
+type RoundingMode = keyof typeof roundingModesImpls
 
 // Based on the original code from Omorphia, Modrinth
 //
@@ -169,6 +172,36 @@ export interface FormatOptions extends FormatRelativeTimeOptions {
    * @default ['quarter']
    */
   excludedUnits?: Intl.RelativeTimeFormatUnit[]
+
+  /**
+   * Rounding mode to use when the resulting duration is not an integer (e.g,
+   * 4.7 seconds).
+   *
+   * It is roughly equivalent to `roundingMode` option for `Intl.NumberFormat`
+   * API, and accepts the following options:
+   *
+   * - `ceil` — round towards positive infinity.
+   * - `floor` — round towards negative infinity.
+   * - `expand` — round away from 0.
+   * - `trunc` — round towards 0.
+   * - `halfCeil` — round values below or at half-increment towards positive
+   *   infinity, and values above away from 0.
+   * - `halfFloor` — round values below or at half-increment towards negative
+   *   infinity, and values above away from 0.
+   * - `halfExpand` — round values above or at half-increment away from 0, and
+   *   values below towards 0.
+   * - `halfTrunc` — round values below or at half-increment towards 0, and values
+   *   above away from 0.
+   * - `halfEven` — round values at half-increment towards the nearest even value,
+   *   values above it away from 0, and values below it towards 0.
+   *
+   * Value of `null` will use `Math.round`. This value is only kept for backward
+   * compatibility, and will be removed in the next major release, in which
+   * `"halfExpand"` will be made a new default.
+   *
+   * @default null // Use `Math.round` (deprecated)
+   */
+  roundingMode?: RoundingMode | null
 }
 
 type TimeSpan = [start: number, end: number]
@@ -274,6 +307,12 @@ function getMinimumMaximumUnits(
   return [minUnit, maxUnit] as const
 }
 
+function throwRangeError(property: string, value: unknown): never {
+  throw new RangeError(
+    `Value ${value} out of range for formatTimeDifference options property ${property}`,
+  )
+}
+
 function calculateBoundaries(
   filteredMatchers: IntervalMatcher[],
   minimumUnit: string,
@@ -318,9 +357,7 @@ function calculateBoundaries(
       invalidProperty = 'maximumUnit'
     }
 
-    throw new RangeError(
-      `Value ${invalidValue!} out of range for formatTimeDifference options property ${invalidProperty!}`,
-    )
+    throwRangeError(invalidProperty!, invalidValue!)
   }
 
   if (minimumUnitMatcherIndex === -1) {
@@ -328,6 +365,15 @@ function calculateBoundaries(
   }
 
   return [minimumUnitMatcherIndex, maximumUnitMatcherIndex]
+}
+
+function getRoundingMethod(options?: FormatOptions) {
+  const roundingMode = options?.roundingMode ?? null
+  if (roundingMode === null) return Math.round
+  if (!Object.hasOwn(roundingModesImpls, roundingMode)) {
+    throwRangeError('roundingMode', roundingMode)
+  }
+  return roundingModesImpls[roundingMode]
 }
 
 function tryAsRelativeTime(
@@ -340,12 +386,14 @@ function tryAsRelativeTime(
 
   if (filteredMatchers.length === 0) return null
 
+  const round = getRoundingMethod(options)
+
   const [minimumUnit, maximumUnit] = getMinimumMaximumUnits(options)
 
   const [minimumUnitMatcherIndex, maximumUnitMatcherIndex] =
     calculateBoundaries(filteredMatchers, minimumUnit, maximumUnit)
 
-  const diff = to - from
+  const diff = from - to
   const diffAbs = Math.abs(diff)
 
   for (
@@ -359,18 +407,14 @@ function tryAsRelativeTime(
 
     if (currentMatcherIndex < maximumUnitMatcherIndex) break
 
-    const roundedDivision = Math.round(
-      diffAbs / matcher[matcher.length > 2 ? 2 : 1]!,
-    )
+    const division = diffAbs / matcher[matcher.length > 2 ? 2 : 1]!
 
-    return formatRelativeTime(
-      diff < 0 ? roundedDivision : -roundedDivision,
-      matcher[0],
-      {
-        numeric: 'auto',
-        ...options, // no worries about extra options, it'll weed them out
-      },
-    )
+    const roundedDivision = round(diff < 0 ? -division : division)
+
+    return formatRelativeTime(roundedDivision, matcher[0], {
+      numeric: 'auto',
+      ...options, // no worries about extra options, it'll weed them out
+    })
   }
 
   return null

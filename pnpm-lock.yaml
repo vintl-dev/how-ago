@@ -17,8 +17,8 @@ devDependencies:
     specifier: ^12.1.0
     version: 12.1.0(eslint@8.53.0)(typescript@5.2.2)
   '@types/node':
-    specifier: ^18.18.9
-    version: 18.18.9
+    specifier: ^20.9.4
+    version: 20.10.0
   eslint:
     specifier: ^8.53.0
     version: 8.53.0
@@ -245,7 +245,7 @@ packages:
     resolution: {integrity: sha512-X7yV7eiwAxdj9k94NEylvbVHLiVG1nvzCV2EAowhxLTwODV1jl9UzZ48leOC0sH7OnuHrIkllaBgneUykIcZaw==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/code-frame': 7.22.10
+      '@babel/code-frame': 7.22.13
       '@babel/parser': 7.22.11
       '@babel/types': 7.22.11
     dev: true
@@ -254,7 +254,7 @@ packages:
     resolution: {integrity: sha512-mzAenteTfomcB7mfPtyi+4oe5BZ6MXxWcn4CX+h4IRJ+OOGXBrWU6jDQavkQI9Vuc5P+donFabBfFCcmWka9lQ==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/code-frame': 7.22.10
+      '@babel/code-frame': 7.22.13
       '@babel/generator': 7.22.10
       '@babel/helper-environment-visitor': 7.22.5
       '@babel/helper-function-name': 7.22.5
@@ -1492,8 +1492,8 @@ packages:
     resolution: {integrity: sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==}
     dev: true
 
-  /@types/node@18.18.9:
-    resolution: {integrity: sha512-0f5klcuImLnG4Qreu9hPj/rEfFq6YRc5n2mAjSsH+ec/mJL+3voBH0+8T7o8RpFjH7ovc+TRsL/c7OYIQsPTfQ==}
+  /@types/node@20.10.0:
+    resolution: {integrity: sha512-D0WfRmU9TQ8I9PFx9Yc+EBHw+vSpIub4IDvQivcp26PtPrdMGAq5SDcpXEo/epqa/DXotVpekHiLNTg3iaKXBQ==}
     dependencies:
       undici-types: 5.26.5
     dev: true
@@ -4614,7 +4614,7 @@ packages:
     resolution: {integrity: sha512-kP+TQYAzAiVnzOlWOe0diD6L35s9bJh0SCn95PIbZFKrOYuIRQsQkeWEYxzVDuHTt9V9YqvYCJ2Qo4z9wdfZPw==}
     engines: {node: '>=16'}
     dependencies:
-      '@babel/code-frame': 7.22.10
+      '@babel/code-frame': 7.22.13
       error-ex: 1.3.2
       json-parse-even-better-errors: 3.0.0
       lines-and-columns: 2.0.3
@@ -4963,7 +4963,7 @@ packages:
       rollup: 3.28.1
       typescript: 5.2.2
     optionalDependencies:
-      '@babel/code-frame': 7.22.10
+      '@babel/code-frame': 7.22.13
     dev: true
 
   /rollup@3.28.1:
@@ -5660,7 +5660,7 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vite-node@0.34.6(@types/node@18.18.9):
+  /vite-node@0.34.6(@types/node@20.10.0):
     resolution: {integrity: sha512-nlBMJ9x6n7/Amaz6F3zJ97EBwR2FkzhBRxF5e+jE6LA3yi6Wtc2lyTij1OnDMIr34v5g/tVQtsVAzhT0jc5ygA==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -5670,7 +5670,7 @@ packages:
       mlly: 1.4.1
       pathe: 1.1.1
       picocolors: 1.0.0
-      vite: 4.1.1(@types/node@18.18.9)
+      vite: 4.1.1(@types/node@20.10.0)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -5681,7 +5681,7 @@ packages:
       - terser
     dev: true
 
-  /vite@4.1.1(@types/node@18.18.9):
+  /vite@4.1.1(@types/node@20.10.0):
     resolution: {integrity: sha512-LM9WWea8vsxhr782r9ntg+bhSFS06FJgCvvB0+8hf8UWtvaiDagKYWXndjfX6kGl74keHJUcpzrQliDXZlF5yg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -5706,7 +5706,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 18.18.9
+      '@types/node': 20.10.0
       esbuild: 0.16.17
       postcss: 8.4.21
       resolve: 1.22.1
@@ -5748,7 +5748,7 @@ packages:
     dependencies:
       '@types/chai': 4.3.7
       '@types/chai-subset': 1.3.3
-      '@types/node': 18.18.9
+      '@types/node': 20.10.0
       '@vitest/expect': 0.34.6
       '@vitest/runner': 0.34.6
       '@vitest/snapshot': 0.34.6
@@ -5767,8 +5767,8 @@ packages:
       strip-literal: 1.0.1
       tinybench: 2.5.1
       tinypool: 0.7.0
-      vite: 4.1.1(@types/node@18.18.9)
-      vite-node: 0.34.6(@types/node@18.18.9)
+      vite: 4.1.1(@types/node@20.10.0)
+      vite-node: 0.34.6(@types/node@20.10.0)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less

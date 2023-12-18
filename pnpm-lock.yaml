@@ -26,13 +26,13 @@ devDependencies:
     specifier: ^1.1.1
     version: 1.1.1
   prettier:
-    specifier: ^3.1.0
-    version: 3.1.0
+    specifier: ^3.1.1
+    version: 3.1.1
   prettier-plugin-jsdoc:
     specifier: ^1.1.1
-    version: 1.1.1(prettier@3.1.0)
+    version: 1.1.1(prettier@3.1.1)
   semantic-release:
-    specifier: ^22.0.10
+    specifier: ^22.0.12
     version: 22.0.12
   typescript:
     specifier: ^5.3.3
@@ -178,11 +178,6 @@ packages:
 
   /@babel/helper-validator-identifier@7.22.20:
     resolution: {integrity: sha512-Y4OZ+ytlatR8AI+8KZfKuL5urKp7qey08ha31L8b3BwewJAoJamTzyvxPR/5D+KkdJCGPq/+8TukHBlY10FX9A==}
-    engines: {node: '>=6.9.0'}
-    dev: true
-
-  /@babel/helper-validator-identifier@7.22.5:
-    resolution: {integrity: sha512-aJXu+6lErq8ltp+JhkJUfk1MTGyuA4v7f3pA+BJ5HLfNC6nAQ0Cpi9uOquUj8Hehg0aUiHzWQbOVJGao6ztBAQ==}
     engines: {node: '>=6.9.0'}
     dev: true
 
@@ -2819,7 +2814,7 @@ packages:
       eslint-plugin-es: 4.1.0(eslint@8.55.0)
       eslint-utils: 3.0.0(eslint@8.55.0)
       ignore: 5.2.4
-      is-core-module: 2.11.0
+      is-core-module: 2.13.0
       minimatch: 3.1.2
       resolve: 1.22.1
       semver: 7.5.4
@@ -2855,7 +2850,7 @@ packages:
     peerDependencies:
       eslint: '>=8.23.1'
     dependencies:
-      '@babel/helper-validator-identifier': 7.22.5
+      '@babel/helper-validator-identifier': 7.22.20
       ci-info: 3.8.0
       clean-regexp: 1.0.0
       eslint: 8.55.0
@@ -4846,7 +4841,7 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier-plugin-jsdoc@1.1.1(prettier@3.1.0):
+  /prettier-plugin-jsdoc@1.1.1(prettier@3.1.1):
     resolution: {integrity: sha512-yA13k0StQ+g0RJBrmo2IldVSp3ANXlJdsNzQNhGtQ0LY7JFC+u01No/1Z9xp0ZhT4u98BXlPAc4SC0iambqy5A==}
     engines: {node: '>=14.13.1 || >=16.0.0'}
     peerDependencies:
@@ -4855,13 +4850,13 @@ packages:
       binary-searching: 2.0.5
       comment-parser: 1.4.0
       mdast-util-from-markdown: 2.0.0
-      prettier: 3.1.0
+      prettier: 3.1.1
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /prettier@3.1.0:
-    resolution: {integrity: sha512-TQLvXjq5IAibjh8EpBIkNKxO749UEWABoiIZehEPiY4GNpVdhaFKqSTu+QrlU6D2dPAfubRmtJTi4K4YkQ5eXw==}
+  /prettier@3.1.1:
+    resolution: {integrity: sha512-22UbSzg8luF4UuZtzgiUOfcGM8s4tjBv6dJRT7j275NXsy2jb4aJa4NNveul5x4eqlF1wuhuR2RElK71RvmVaw==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true

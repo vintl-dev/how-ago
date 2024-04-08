@@ -17,7 +17,7 @@ devDependencies:
     specifier: ^12.1.0
     version: 12.1.0(eslint@8.57.0)(typescript@5.4.4)
   '@types/node':
-    specifier: ^18.19.28
+    specifier: ^18.19.29
     version: 18.19.29
   eslint:
     specifier: ^8.57.0
@@ -35,7 +35,7 @@ devDependencies:
     specifier: ^22.0.12
     version: 22.0.12
   typescript:
-    specifier: ^5.4.3
+    specifier: ^5.4.4
     version: 5.4.4
   unbuild:
     specifier: ^2.0.0

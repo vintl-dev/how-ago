@@ -19,8 +19,8 @@ importers:
         specifier: ^12.1.0
         version: 12.1.0(eslint@8.57.1)(typescript@5.6.3)
       '@types/node':
-        specifier: ^18.19.59
-        version: 18.19.62
+        specifier: ^22.10.2
+        version: 22.10.2
       eslint:
         specifier: ^8.57.1
         version: 8.57.1
@@ -44,7 +44,7 @@ importers:
         version: 2.0.0(typescript@5.6.3)
       vitest:
         specifier: ^2.1.4
-        version: 2.1.4(@types/node@18.19.62)
+        version: 2.1.4(@types/node@22.10.2)
 
 packages:
 
@@ -908,8 +908,8 @@ packages:
   '@types/ms@0.7.31':
     resolution: {integrity: sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==}
 
-  '@types/node@18.19.62':
-    resolution: {integrity: sha512-UOGhw+yZV/icyM0qohQVh3ktpY40Sp7tdTW7HxG3pTd7AiMrlFlAJNUrGK9t5mdW0+ViQcFV74zCSIx9ZJpncA==}
+  '@types/node@22.10.2':
+    resolution: {integrity: sha512-Xxr6BBRCAOQixvonOye19wnzyDiUtTeqldOOmj3CkeblonbccA12PFwlufvRdrpjXxqnmUaeiU5EOA+7s5diUQ==}
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -3107,8 +3107,8 @@ packages:
       typescript:
         optional: true
 
-  undici-types@5.26.5:
-    resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
+  undici-types@6.20.0:
+    resolution: {integrity: sha512-Ny6QZ2Nju20vw1SRHe3d9jVu6gJ+4e3+MMpqu7pqE5HT6WsTSlce++GQmK5UXS8mzV8DSYHrQH+Xrf2jVcuKNg==}
 
   unicode-emoji-modifier-base@1.0.0:
     resolution: {integrity: sha512-yLSH4py7oFH3oG/9K+XWrz1pSi3dfUrWEnInbxMfArOfc1+33BlGPQtLsOYwvdMy11AwUBetYuaRxSPqgkq+8g==}
@@ -4061,9 +4061,9 @@ snapshots:
 
   '@types/ms@0.7.31': {}
 
-  '@types/node@18.19.62':
+  '@types/node@22.10.2':
     dependencies:
-      undici-types: 5.26.5
+      undici-types: 6.20.0
 
   '@types/normalize-package-data@2.4.4': {}
 
@@ -4167,13 +4167,13 @@ snapshots:
       chai: 5.1.2
       tinyrainbow: 1.2.0
 
-  '@vitest/mocker@2.1.4(vite@5.0.8(@types/node@18.19.62))':
+  '@vitest/mocker@2.1.4(vite@5.0.8(@types/node@22.10.2))':
     dependencies:
       '@vitest/spy': 2.1.4
       estree-walker: 3.0.3
       magic-string: 0.30.12
     optionalDependencies:
-      vite: 5.0.8(@types/node@18.19.62)
+      vite: 5.0.8(@types/node@22.10.2)
 
   '@vitest/pretty-format@2.1.4':
     dependencies:
@@ -6557,7 +6557,7 @@ snapshots:
       - sass
       - supports-color
 
-  undici-types@5.26.5: {}
+  undici-types@6.20.0: {}
 
   unicode-emoji-modifier-base@1.0.0: {}
 
@@ -6608,12 +6608,12 @@ snapshots:
       spdx-correct: 3.1.1
       spdx-expression-parse: 3.0.1
 
-  vite-node@2.1.4(@types/node@18.19.62):
+  vite-node@2.1.4(@types/node@22.10.2):
     dependencies:
       cac: 6.7.14
       debug: 4.3.7
       pathe: 1.1.2
-      vite: 5.0.8(@types/node@18.19.62)
+      vite: 5.0.8(@types/node@22.10.2)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -6624,19 +6624,19 @@ snapshots:
       - supports-color
       - terser
 
-  vite@5.0.8(@types/node@18.19.62):
+  vite@5.0.8(@types/node@22.10.2):
     dependencies:
       esbuild: 0.19.9
       postcss: 8.4.32
       rollup: 4.8.0
     optionalDependencies:
-      '@types/node': 18.19.62
+      '@types/node': 22.10.2
       fsevents: 2.3.3
 
-  vitest@2.1.4(@types/node@18.19.62):
+  vitest@2.1.4(@types/node@22.10.2):
     dependencies:
       '@vitest/expect': 2.1.4
-      '@vitest/mocker': 2.1.4(vite@5.0.8(@types/node@18.19.62))
+      '@vitest/mocker': 2.1.4(vite@5.0.8(@types/node@22.10.2))
       '@vitest/pretty-format': 2.1.4
       '@vitest/runner': 2.1.4
       '@vitest/snapshot': 2.1.4
@@ -6652,11 +6652,11 @@ snapshots:
       tinyexec: 0.3.1
       tinypool: 1.0.1
       tinyrainbow: 1.2.0
-      vite: 5.0.8(@types/node@18.19.62)
-      vite-node: 2.1.4(@types/node@18.19.62)
+      vite: 5.0.8(@types/node@22.10.2)
+      vite-node: 2.1.4(@types/node@22.10.2)
       why-is-node-running: 2.3.0
     optionalDependencies:
-      '@types/node': 18.19.62
+      '@types/node': 22.10.2
     transitivePeerDependencies:
       - less
       - lightningcss
